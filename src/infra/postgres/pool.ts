@@ -1,5 +1,5 @@
 import pkg from 'pg';
-import { POSTGRES_DB, POSTGRES_HOST, POSTGRES_PASSWORD, POSTGRES_PORT, POSTGRES_USER} from '../settings.js'
+import { POSTGRES_DB, POSTGRES_HOST, POSTGRES_PASSWORD, POSTGRES_PORT, POSTGRES_USER} from '../../settings.js'
 const { Pool } = pkg;
 
 export const pool = new Pool({
