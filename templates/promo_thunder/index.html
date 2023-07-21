@@ -120,26 +120,26 @@
       <img id="image">
     </div>
     <div class="container_info">
-      <div class="container_info-shipping" id="info_shipping">
+      <div class="container_info-shipping" id="infoShipping">
         <span>Frete Grátis com Amazon Prime</span>
       </div>
-      <div class="container_info-installments" id="info_installments">
-        <span>Parcelado sem juros</span>
+      <div class="container_info-installments" id="infoInstallments">
+        <span>Parcele sem juros</span>
       </div>
     </div>
     <div class="container_price">
       <div class="container_price-price">
         <div class="container_price-price--old">
             <span>R$</span>
-            <span id="price_old"></span>
+            <span id="priceOld"></span>
         </div>
         <div class="container_price-price--new">
             <span>R$</span>
-            <span id="price_new"></span>
+            <span id="priceNew"></span>
         </div>
       </div>
       <div class="container_price-discount">
-        <span id="price_discount"></span>
+        <span id="priceDiscount"></span>
       </div>
     </div>
     <div class="container_button">
@@ -153,30 +153,30 @@
     </div>
   </div>
   <script>
-    const title = "Title"
-    const imageUrl = "https://m.media-amazon.com/images/I/81AqI7yTQYL._AC_SL1500_.jpg"
-    const priceOld = "199.99"
-    const priceNew = "149.90"
-    const discount = "25"
-    const accpetInstallments = false;
-    const freeShipping = false;  
+    const title = "Title";
+    const image_url = "https://m.media-amazon.com/images/I/81AqI7yTQYL._AC_SL1500_.jpg";
+    const previous_price = "199.99";
+    const price = "149.90";
+    const discount = "25";
+    const installments = "149.90";
+    const free_shipping = false;  
     
-    const titleElement = document.getElementById("title")
-    const imageElement = document.getElementById("image")
-    const infoShippingElement = document.getElementById("info_shipping")
-    const infoInstallmentsElement =  document.getElementById("info_installments")
-    const priceOldElement = document.getElementById("price_old")
-    const priceNewElement = document.getElementById("price_new")
-    const priceDiscountElement = document.getElementById("price_discount")
+    const titleElement = document.getElementById("title");
+    const imageElement = document.getElementById("image");
+    const infoShippingElement = document.getElementById("infoShipping");
+    const infoInstallmentsElement =  document.getElementById("infoInstallments");
+    const priceOldElement = document.getElementById("priceOld");
+    const priceNewElement = document.getElementById("priceNew");
+    const priceDiscountElement = document.getElementById("priceDiscount");
 
-    if (!freeShipping) infoShippingElement.style.display = "none"
-    if (!accpetInstallments) infoInstallmentsElement.style.display = "none"
-    
-    titleElement.innerText = title
-    imageElement.setAttribute("src", imageUrl)
-    priceOldElement.innerText = priceOld
-    priceNewElement.innerText = priceNew
-    priceDiscountElement.innerText =  discount && "-" + discount + "%"
+    if (!freeShipping) infoShippingElement.style.display = "none";
+    if (!installments) infoInstallmentsElement.style.display = "none";
+
+    titleElement.innerText = title;
+    imageElement.setAttribute("src", image_url);
+    priceOldElement.innerText = previous_price;
+    priceNewElement.innerText = price;
+    priceDiscountElement.innerText =  discount && "-" + discount.toString() + "%";
   </script>
 </body>
 </html>
