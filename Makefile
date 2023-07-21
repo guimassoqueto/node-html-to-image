@@ -11,3 +11,7 @@ ts:
 
 js:
 	${REMOVE_SHOTS} && npm run build && npm run js
+
+or:
+	open https://github.com/guimassoqueto/node-html-to-image
+	
