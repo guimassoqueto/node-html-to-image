@@ -1,23 +1,19 @@
-import { writeFile } from "fs/promises";
 import puppeteer from "puppeteer";
-import { ProductModel } from "../domain/models/product.js";
-import { formatHTML } from "../helpers/format-html.js";
-import { SCREENSHOTS_FOLDER, TEMP_FOLDER } from "../settings.js";
+import { createHTMLString } from "../helpers/create-html-string.js";
+import { SCREENSHOTS_FOLDER } from "../settings.js";
+import { Product } from "../types/product.js";
 
 export class ScreenshotService {
-  static async takeShot(product: ProductModel): Promise<void> {
-    const filePath = `file://${TEMP_FOLDER}/${product.id}.html`;
-    await writeFile(`${TEMP_FOLDER}/${product.id}.html`, formatHTML(product));
-
-    const browser = await puppeteer.launch({ headless: "new" });
+  static async takeShot(product: Product): Promise<void> {
+    const browser = await puppeteer.launch({ headless: "new" })
     const page = await browser.newPage();
-    await page.setViewport({ width: 1080, height: 1920 });
-    await page.goto(filePath);
+    await page.setViewport({ width: 1080, height: 1920 })
+    await page.setContent(createHTMLString(product), { waitUntil: 'networkidle2' })
     await page.screenshot({
       path: `${SCREENSHOTS_FOLDER}/${product.id}.webp`,
       type: "webp",
       quality: 100,
     });
-    await browser.close();
+    await browser.close()
   }
 }
