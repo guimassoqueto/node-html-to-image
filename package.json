@@ -1,7 +1,7 @@
 {
   "type": "module",
-  "name": "node-html-to-image",
-  "version": "1.0.0",
+  "name": "scrap-puppet",
+  "version": "2.0.1",
   "description": "Base Node Setup",
   "main": "index.js",
   "scripts": {
