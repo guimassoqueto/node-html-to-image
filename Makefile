@@ -1,14 +1,11 @@
 h:
 	npx husky install
 
-b:
-	npm run build
+i:
+	npm install
 
-ts:
-	npm run ts
-
-js:
-	npm run build && npm run js
+env:
+	cat .env.sample 1> .env
 
 or:
 	open https://github.com/guimassoqueto/node-html-to-image
