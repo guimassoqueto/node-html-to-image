@@ -1,30 +1,30 @@
 import { RabbitMQReceiver, TConsumer } from "./infra/rabbitmq/receiver.js";
-import { basicQuery, basicQuery2 } from './infra/postgres/queries/basic-query.js'
-import { pool } from './infra/postgres/pool.js'
-import { QueryProductFormater } from "./helpers/query-product-formater.js";
+import { ScrapyLastExecution, PromoThunderQueries } from './infra/postgres/queries/queries.js'
 import pLimit from 'p-limit';
 import { ScreenshotService } from "./services/screenshot-service.js";
 
-
+/**
+ * Function that handles messages received
+ */
 const messageHandler: TConsumer = (channel) => {
   return async (message) => {
     if (message) {
-      const timestamp = message.content.toString();
-      console.log(`Timestamp received: ${timestamp}`);
-      
-      await main(timestamp)
-
+      console.log(`Message Received: ${message}`);
+      await main()
       channel.ack(message);
       console.log("Waiting for new messages...");
     }
   };
 };
 
-
-async function main(timestamp: string): Promise<void> {
-  const queryResult = await pool.query(basicQuery2(timestamp))
-  const products = QueryProductFormater.format(queryResult)
-  const limit = pLimit(5)
+/**
+ * Funcion reponsable for generate screenshots
+ */
+async function main(): Promise<void> {
+  const datetime = await ScrapyLastExecution.getDatetime()
+  const products = await PromoThunderQueries.getProducts(datetime)
+  
+  const limit = pLimit(3)
 
   const promises: Promise<void>[] = []
   for (const product of products) {
