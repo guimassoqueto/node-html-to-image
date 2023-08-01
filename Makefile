@@ -5,7 +5,7 @@ i:
 	npm install
 
 env:
-	cat .env.sample 1> .env
+	cp .env.sample .env
 
 or:
 	open https://github.com/guimassoqueto/node-html-to-image
