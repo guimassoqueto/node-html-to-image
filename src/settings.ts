@@ -5,6 +5,8 @@ export const POSTGRES_DB = process.env.POSTGRES_DB ?? "postgres"
 export const POSTGRES_USER = process.env.POSTGRES_USER ?? "postgres"
 export const POSTGRES_PASSWORD = process.env.POSTGRES_PASSWORD ?? "password"
 export const POSTGRES_HOST = process.env.POSTGRES_HOST ?? "localhost"
+export const POSTGRES_PRODUCTS_TABLE = process.env.POSTGRES_PRODUCTS_TABLE ?? "error"
+export const POSTGRES_LAST_SCRAP_TABLE = process.env.POSTGRES_LAST_SCRAP_TABLE ?? "error"
 
 export const SCREENSHOTS_FOLDER = process.env.SCREENSHOTS_FOLDER ?? "./screenshots"
 
