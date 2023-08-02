@@ -1,44 +1,26 @@
-import { RabbitMQReceiver, TConsumer } from "./infra/rabbitmq/receiver.js";
-import { ScrapyLastExecution, PromoThunderQueries } from './infra/postgres/queries/queries.js'
-import pLimit from 'p-limit';
-import { ScreenshotService } from "./services/screenshot-service.js";
+import { Consumer, RabbitMQReceiver } from "./infra/rabbitmq/receiver.js";
+import fofinhoShots from "./utils/fofinho-shots.js";
+import thunderShots from "./utils/thunder-shots.js";
 
-/**
- * Function that handles messages received
- */
-const messageHandler: TConsumer = (channel) => {
+const messageHandler: Consumer = (channel) => {
   return async (message) => {
     if (message) {
-      console.log(`Message Received: ${message}`);
-      await main()
+      console.log(`Message Received: ${message}`)
+      await takeShots()
       channel.ack(message);
-      console.log("Waiting for new messages...");
+      console.log("Waiting for new messages...")
     }
-  };
-};
-
-/**
- * Funcion reponsable for generate screenshots
- */
-async function main(): Promise<void> {
-  const datetime = await ScrapyLastExecution.getDatetime()
-  const products = await PromoThunderQueries.getProducts(datetime)
-  
-  const limit = pLimit(3)
-
-  const promises: Promise<void>[] = []
-  for (const product of products) {
-    promises.push(
-      limit(() => ScreenshotService.takeShot(product))
-    )
   }
-  await Promise.all(promises)
 }
 
+async function takeShots(): Promise<void> {
+  await fofinhoShots()
+  await thunderShots()
+}
 
 try {
-  console.log("Waiting for new messages...");
-  await RabbitMQReceiver.receiver(messageHandler);
+  console.log("Waiting for new messages...")
+  await RabbitMQReceiver.receiver(messageHandler)
 } catch (error) {
-  console.error(error);
+  console.error(error)
 }

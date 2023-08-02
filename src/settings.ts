@@ -8,7 +8,8 @@ export const POSTGRES_HOST = process.env.POSTGRES_HOST ?? "localhost"
 export const POSTGRES_PRODUCTS_TABLE = process.env.POSTGRES_PRODUCTS_TABLE ?? "error"
 export const POSTGRES_LAST_SCRAP_TABLE = process.env.POSTGRES_LAST_SCRAP_TABLE ?? "error"
 
-export const SCREENSHOTS_FOLDER = process.env.SCREENSHOTS_FOLDER ?? "./screenshots"
+export const FOFINHO_SCREENSHOTS_FOLDER = process.env.FOFINHO_SCREENSHOTS_FOLDER ?? "./screenshots"
+export const THUNDER_SCREENSHOTS_FOLDER = process.env.THUNDER_SCREENSHOTS_FOLDER ?? "./screenshots"
 
 export const RABBITMQ_DEFAULT_USER = process.env.RABBITMQ_DEFAULT_USER ?? "user"
 export const RABBITMQ_DEFAULT_PASS = process.env.RABBITMQ_DEFAULT_PASS ?? "password"
