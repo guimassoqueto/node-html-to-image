@@ -1,9 +1,4 @@
-import { ProductModel } from "../../domain/models/product-model.js";
-
-export class FofinhoTemplater {
-  static generate (product: ProductModel): string {
-    return `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -214,8 +209,8 @@ export class FofinhoTemplater {
       const previousPrice = "${product.previous_price}";
       const price = "${product.price}";
       const discount = "${product.discount}";
-      const installments = ${parseFloat(product.price) > 100};
-      const freeShipping = ${product.free_shipping};  
+//      const installments = ${parseFloat(product.price) > 100};
+//      const freeShipping = ${product.free_shipping};  
       
 
       const titleElement = document.getElementById("title");
@@ -245,6 +240,3 @@ export class FofinhoTemplater {
   </div>
 </body>
 </html>
-    `;
-  }
-}

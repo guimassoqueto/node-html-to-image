@@ -1,32 +1,40 @@
-import { ProductModel } from "../../domain/models/product-model.js";
-
-export class FofinhoTemplater {
-  static generate (product: ProductModel): string {
-    return `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Promo Thunder</title>
+  <link href="https://fonts.cdnfonts.com/css/bubbleboddy-neue-trial" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Public+Sans:wght@900&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/heatrix" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Public+Sans:wght@900&display=swap" rel="stylesheet"> 
   <style>
+    @import url("https://fonts.cdnfonts.com/css/bubbleboddy-neue-trial");
+    * {
+      font-family: "Bubbleboddy Neue Trial", "Open Sans", sans-serif;
+    }
+
     .background_container {
-      background-image: url("https://raw.githubusercontent.com/guimassoqueto/logos/main/background.png");
-      background-size:cover; /* Adjust this property as needed */
+      background-image: url("https://raw.githubusercontent.com/guimassoqueto/logos/main/thunder-background.png");
+      background-size:contain; /* Adjust this property as needed */
       background-position: center center; /* Adjust this property as needed */
       height: 100vh !important;
       width: 100vw !important; 
       position: relative; /* To position the overlay correctly */
-      z-index: 10;
-      background-color: #e3e3e3;
+      z-index: -99;
+    }
+    .background_container::before {
+      content: "";
+      position: absolute;
+      top: -5;
+      left: -5;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255, 255, 255, 0.95);
+      z-index: -1;
     }
     
     .container {
-      font-family: 'Carter One', cursive;
       display: flex;
       flex-direction: column;
       justify-content:space-evenly;
@@ -61,7 +69,7 @@ export class FofinhoTemplater {
       position: relative;
     }
     .container_image img{
-      height: 35vh;
+      height: 40vh;
     }
 
     .container_image--fomo {
@@ -121,38 +129,20 @@ export class FofinhoTemplater {
     .container_button {
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
     }
 
     .container_button-img img {
       margin-top: 1.5em;
-      height: 20em;
+      height: 8em;
     }
 
     .container_button-button {
       border: 0.4em solid #000;
-      background-color: #fff;
       border-radius: 1em;
       height: 10em;
-      width: calc(60vw + 5em);
-      position: relative;
-      right: 5em;
-      z-index: -99;
-    }
-
-    .container_message {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .container_message h1 {
-      text-align: center;
-      font-family: 'Heatrix', sans-serif;
-      font-size: 4em;
-      text-transform: uppercase;
+      width: 60vw;
+      margin-bottom: 4em;
     }
 
   </style>
@@ -170,7 +160,7 @@ export class FofinhoTemplater {
         <h1 id="title"></h1>
       </div>
       <div class="container_image">
-        <img src="https://m.media-amazon.com/images/I/61CT79MvvDL._AC_SL1080_.jpg">
+        <img id="image">
         <div class="container_image--fomo">
           <span id="fomoMessage"></span>
         </div>
@@ -200,12 +190,12 @@ export class FofinhoTemplater {
       </div>
       <div class="container_button">
         <div class="container_button-img">
-          <img src="https://raw.githubusercontent.com/guimassoqueto/logos/main/fofinho.png" alt="">
+          <img src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg" alt="">
         </div>
         <div class="container_button-button"></div>
-      </div>
-      <div class="container_message">
-        <h1>As melhores ofertas você encontra aqui!</h1>
+        <div class="container_button-img">
+          <img src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg" alt="">
+        </div>
       </div>
     </div>
     <script>
@@ -214,8 +204,8 @@ export class FofinhoTemplater {
       const previousPrice = "${product.previous_price}";
       const price = "${product.price}";
       const discount = "${product.discount}";
-      const installments = ${parseFloat(product.price) > 100};
-      const freeShipping = ${product.free_shipping};  
+//      const installments = ${parseFloat(product.price) > 100};
+//      const freeShipping = ${product.free_shipping};  
       
 
       const titleElement = document.getElementById("title");
@@ -245,6 +235,3 @@ export class FofinhoTemplater {
   </div>
 </body>
 </html>
-    `;
-  }
-}

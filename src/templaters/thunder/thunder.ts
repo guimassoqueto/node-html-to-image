@@ -9,13 +9,14 @@ export class ThunderTemplater {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Promo Thunder</title>
-      <link href="https://fonts.cdnfonts.com/css/groovy-cartoon-expanded-round" rel="stylesheet">      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link href="https://fonts.cdnfonts.com/css/bubbleboddy-neue-trial" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Public+Sans:wght@900&display=swap" rel="stylesheet"> 
       <style>
         @import url("https://fonts.cdnfonts.com/css/bubbleboddy-neue-trial");
         * {
-          font-family: "Groovy Cartoon Expanded Round", "Open Sans", sans-serif;
+          font-family: "Bubbleboddy Neue Trial", "Open Sans", sans-serif;
         }
     
         .background_container {
@@ -62,7 +63,7 @@ export class ThunderTemplater {
           justify-content: center;
         }
         .container_title h1{
-          font-size: 2.65em;
+          font-size: 2.4em;
           color: #000;
           font-weight: 500;
         }
@@ -92,7 +93,7 @@ export class ThunderTemplater {
           color: white;
           text-transform: uppercase;
           font-weight: bold;
-          font-size: 2.25em;
+          font-size: 2em;
         }
     
         .container_rating {
@@ -108,7 +109,7 @@ export class ThunderTemplater {
           flex-direction: column;  
           justify-content: center;
           align-items: center;
-          font-size: 2.25em;
+          font-size: 2em;
         }
     
         .container_price {
@@ -120,10 +121,10 @@ export class ThunderTemplater {
           margin-right: 3em;
         }
         .container_price-price {
-          font-size: 3em;
+          font-size: 2.75em;
         }
         .container_price-discount {
-          font-size: 4.25em;
+          font-size: 4em;
           font-weight: 600;
         }
         .container_price-price--old{
@@ -224,7 +225,7 @@ export class ThunderTemplater {
           if (!freeShipping) infoShippingElement.style.display = "none";
           if (!installments) infoInstallmentsElement.style.display = "none";
     
-          const randomFomo = ["Aproveite agora, oferta incrível!", "Desconto incrível!", "Preço baixo, aproveite!", "Desconto relâmpago, não perca!", "Oferta única, aproveite!", "Preço imperdível!", "Desconto especial, aproveite!", "Aproveite, oferta limitada!", "Desconto surpresa, compre já!", "Oferta imperdível, aproveite!", "Desconto relâmpago!"]
+          const randomFomo = ["Desconto imperdível!", "Oferta incrível, nào perca!", "Preço baixo, aproveite!", "Promoção relâmpago!", "Economize já!", "Só hoje, desconto!", "Compre e economize!", "Não perca essa!", "Preço de arrasar!", "Super desconto hoje!", "Aproveite o desconto!", "Oferta única, corra!", "Desconto sensacional!", "Só agora, promoção!", "Aproveite o preço!", "Acaba em instantes!", "Economia garantida!", "Promoção exclusiva hoje!", "Preço incrível!", "Desconto especial!"]
           if (parseFloat(discount) >= 25) {
             document.querySelector(".container_image--fomo").style.display = "block";
             fomoMessageElement.innerText = randomFomo[Math.floor(Math.random() * randomFomo.length)]
@@ -238,7 +239,7 @@ export class ThunderTemplater {
         </script>
       </div>
     </body>
-    </html>    
+    </html>
     `
   }
 }
