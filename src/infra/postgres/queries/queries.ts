@@ -1,5 +1,11 @@
 import { POSTGRES_PRODUCTS_TABLE } from "../../../settings.js"
 
+export const kadecQuery = `
+  SELECT * FROM items WHERE 
+  category ILIKE ANY (ARRAY['%casa%', '%cozinha%','%jardim%', '%decora%', '%limpeza%', '%beleza%', '%doméstic%']) AND 
+  reviews >= 300 AND 
+  discount >= 10
+`
 
 export const fofinhoQuery = `
   SELECT * FROM ${POSTGRES_PRODUCTS_TABLE} 
