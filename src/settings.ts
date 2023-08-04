@@ -10,6 +10,7 @@ export const POSTGRES_LAST_SCRAP_TABLE = process.env.POSTGRES_LAST_SCRAP_TABLE ?
 
 export const FOFINHO_SCREENSHOTS_FOLDER = process.env.FOFINHO_SCREENSHOTS_FOLDER ?? "./screenshots"
 export const THUNDER_SCREENSHOTS_FOLDER = process.env.THUNDER_SCREENSHOTS_FOLDER ?? "./screenshots"
+export const KADEC_SCREENSHOTS_FOLDER = process.env.KADEC_SCREENSHOTS_FOLDER ?? "./screenshots"
 
 export const RABBITMQ_DEFAULT_USER = process.env.RABBITMQ_DEFAULT_USER ?? "user"
 export const RABBITMQ_DEFAULT_PASS = process.env.RABBITMQ_DEFAULT_PASS ?? "password"

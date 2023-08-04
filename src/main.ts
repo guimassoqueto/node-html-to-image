@@ -1,5 +1,5 @@
 import { Consumer, RabbitMQReceiver } from "./infra/rabbitmq/receiver.js";
-import fofinhoShots from "./utils/fofinho-shots.js";
+import kadecShots from "./utils/kadec-shots.js";
 import thunderShots from "./utils/thunder-shots.js";
 
 const messageHandler: Consumer = (channel) => {
@@ -14,8 +14,8 @@ const messageHandler: Consumer = (channel) => {
 }
 
 async function takeShots(): Promise<void> {
-  await fofinhoShots()
   await thunderShots()
+  await kadecShots()
 }
 
 try {

@@ -1,5 +1,11 @@
 import { POSTGRES_PRODUCTS_TABLE } from "../../../settings.js"
 
+export const kadecQuery = `
+  SELECT * FROM items WHERE 
+  category ILIKE ANY (ARRAY['%casa%', '%cozinha%','%jardim%', '%decora%', '%limpeza%', '%beleza%', '%doméstic%']) AND 
+  reviews >= 300 AND 
+  discount >= 10
+`
 
 export const fofinhoQuery = `
   SELECT * FROM ${POSTGRES_PRODUCTS_TABLE} 
@@ -11,27 +17,24 @@ export const fofinhoQuery = `
 `
 
 export const thunderQuery = `
-WITH pt AS
-  (
+WITH pt AS (
     SELECT *
-    FROM items WHERE category ILIKE ANY (ARRAY['%saúde%', '%bem-estar%', '%eletrônico%', '%cozinha%', '%alimentos%', '%automotivo%', '%casa%', '%jardim%', '%limpeza%', '%games%', '%consoles%', '%informática%', '%computador%'])
+    FROM items WHERE category ILIKE ANY (ARRAY['%saúde%', '%eletrônico%', '%cozinha%', '%alimentos%', '%automotivo%', '%casa%', '%jardim%', '%limpeza%', '%informática%', '%doméstic%'])
     AND reviews > 500
     AND discount >= 20
     UNION
     SELECT *
-    FROM items  WHERE category ILIKE ANY (ARRAY['%beleza%', '%bebê%', '%higiene%', '%celulares%', '%smartphone%'])
+    FROM items  WHERE category ILIKE ANY (ARRAY['%beleza%', '%bebê%', '%higiene%'])
     AND reviews > 500
     AND discount >= 10
     UNION
-    SELECT *
+    SELECT * FROM items WHERE title ILIKE ANY (ARRAY['%nintendo%', '%toshiba%', '%huawei%', '%xiaomi%', '%dell%', '%microsoft%', '%philips%', '% hp %', '% LG %', '%panasonic%', '%sony%', '% apple%', '%samsung%'])
+	  AND discount > 20 AND reviews > 50
+    UNION
+	  SELECT *
     FROM items  WHERE category = ''
     AND reviews > 500
     AND discount >= 10
-    UNION
-    SELECT *
-    FROM items WHERE category ILIKE '%livro%'
-    AND REVIEWS > 1500
-    AND discount >= 20
   )
   SELECT * FROM pt WHERE 
   category NOT ILIKE '%moda%'
