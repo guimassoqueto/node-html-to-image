@@ -69,7 +69,8 @@
       position: relative;
     }
     .container_image img{
-      height: 40vh;
+      max-height: 40vh;
+      max-width: 980px;
     }
 
     .container_image--fomo {
@@ -154,51 +155,51 @@
   <div class="background_container">
     <div class="container">
       <div class="container_header">
-        <div class="container_header-logo">
-          <!--<img src="https://vetores.org/d/magalu.svg">-->
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
-        </div>
+  <div class="container_header-logo">
+    <!--<img src="https://vetores.org/d/magalu.svg">-->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+  </div>
       </div>
       <div class="container_title">
-        <h1 id="title"></h1>
+  <h1 id="title"></h1>
       </div>
       <div class="container_image">
-        <img id="image">
-        <div class="container_image--fomo">
-          <span id="fomoMessage"></span>
-        </div>
+  <img id="image">
+  <div class="container_image--fomo">
+    <span id="fomoMessage"></span>
+  </div>
       </div>
       <div class="container_info">
-        <div class="container_info-shipping" id="infoShipping">
-          <span>Frete Grátis com Amazon Prime</span>
-        </div>
-        <div class="container_info-installments" id="infoInstallments">
-          <span>Parcele sem juros</span>
-        </div>
+  <div class="container_info-shipping" id="infoShipping">
+    <span>Frete Grátis com Amazon Prime</span>
+  </div>
+  <div class="container_info-installments" id="infoInstallments">
+    <span>Parcele sem juros</span>
+  </div>
       </div>
       <div class="container_price">
-        <div class="container_price-price">
-          <div class="container_price-price--old">
-              <span>R$</span>
-              <span id="priceOld"></span>
-          </div>
-          <div class="container_price-price--new">
-              <span>R$</span>
-              <span id="priceNew"></span>
-          </div>
-        </div>
-        <div class="container_price-discount">
-          <span id="priceDiscount"></span>
-        </div>
+  <div class="container_price-price">
+    <div class="container_price-price--old">
+        <span>R$</span>
+        <span id="priceOld"></span>
+    </div>
+    <div class="container_price-price--new">
+        <span>R$</span>
+        <span id="priceNew"></span>
+    </div>
+  </div>
+  <div class="container_price-discount">
+    <span id="priceDiscount"></span>
+  </div>
       </div>
       <div class="container_button">
-        <div class="container_button-img">
-          <img src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg" alt="">
-        </div>
-        <div class="container_button-button"></div>
-        <div class="container_button-img">
-          <img src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg" alt="">
-        </div>
+  <div class="container_button-img">
+    <img src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg" alt="">
+  </div>
+  <div class="container_button-button"></div>
+  <div class="container_button-img">
+    <img src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg" alt="">
+  </div>
       </div>
     </div>
     <script>
@@ -207,8 +208,8 @@
       const previousPrice = "${product.previous_price}";
       const price = "${product.price}";
       const discount = "${product.discount}";
-//      const installments = ${parseFloat(product.price) > 100};
-//      const freeShipping = ${product.free_shipping};  
+      //const installments = ${parseFloat(product.price) > 100};
+      //const freeShipping = ${product.free_shipping};  
       
 
       const titleElement = document.getElementById("title");
@@ -225,8 +226,8 @@
 
       const randomFomo = ["Desconto imperdível!", "Oferta incrível, não perca!", "Preço baixo, aproveite!", "Promoção relâmpago!", "Economize já!", "Só hoje, desconto!", "Compre e economize!", "Não perca essa!", "Preço de arrasar!", "Super desconto hoje!", "Aproveite o desconto!", "Oferta única, corra!", "Desconto sensacional!", "Só agora, promoção!", "Aproveite o preço!", "Acaba em instantes!", "Economia garantida!", "Promoção exclusiva hoje!", "Preço incrível!", "Desconto especial!"]
       if (parseFloat(discount) >= 25) {
-        document.querySelector(".container_image--fomo").style.display = "block";
-        fomoMessageElement.innerText = randomFomo[Math.floor(Math.random() * randomFomo.length)]
+  document.querySelector(".container_image--fomo").style.display = "block";
+  fomoMessageElement.innerText = randomFomo[Math.floor(Math.random() * randomFomo.length)]
       } 
 
       titleElement.innerText = title;
