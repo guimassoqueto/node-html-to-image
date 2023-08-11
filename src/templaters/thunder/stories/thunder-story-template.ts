@@ -1,7 +1,7 @@
-import { ProductModel } from "../../domain/models/product-model.js";
+import { ProductModel } from "../../../domain/models/product-model.js";
 
-export class ThunderTemplater {
-  static generate (product: ProductModel): string {
+export class ThunderStoryTemplate {
+  static generate(product: ProductModel): string {
     return `
 	<!DOCTYPE html>
 	<html lang="en">
@@ -74,7 +74,8 @@ export class ThunderTemplater {
 	      position: relative;
 	    }
 	    .container_image img{
-	      height: 40vh;
+	      max-height: 40vh;
+				max-width: 980px;
 	    }
 
 	    .container_image--fomo {
@@ -243,6 +244,6 @@ export class ThunderTemplater {
 	  </div>
 	</body>
 	</html>
-    `
+    `;
   }
 }

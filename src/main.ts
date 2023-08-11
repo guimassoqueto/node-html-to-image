@@ -1,11 +1,17 @@
 import { queryByAmazonIds } from "./infra/postgres/queries/queries.js";
 import { Consumer, RabbitMQReceiver } from "./infra/rabbitmq/receiver.js";
-import kadecShots from "./utils/kadec-shots.js";
-import thunderShots from "./utils/thunder-shots.js";
+import { kadecStory } from "./utils/kadec-story.js";
+import { thunderFeedFull } from "./utils/thuder-feed-full.js";
+import { thunderFeedQuarter } from "./utils/thuder-feed-quarter.js";
+import { thuderStory } from "./utils/thunder-story.js";
+
+type messageType = string[] | null;
 
 type JsonMessage = {
-  kadec?: string[]
-  thunder?: string[]
+  k?: messageType // k = kadec
+  ts?: messageType, // ts = thunder story
+  tfq?: messageType, // tfq = thunder feed quarter
+  tff?: messageType // thunder feed full
 }
 
 const messageHandler: Consumer = (channel) => {
@@ -23,8 +29,11 @@ const messageHandler: Consumer = (channel) => {
 }
 
 async function takeShots(jsonMessage: JsonMessage): Promise<void> {
-  if (jsonMessage.kadec) await kadecShots(queryByAmazonIds(jsonMessage.kadec))
-  if (jsonMessage.thunder) await thunderShots(queryByAmazonIds(jsonMessage.thunder))
+  if (jsonMessage.k) await kadecStory(queryByAmazonIds(jsonMessage.k))
+
+  if (jsonMessage.ts) await thuderStory(queryByAmazonIds(jsonMessage.ts))
+  if (jsonMessage.tfq) await thunderFeedQuarter(queryByAmazonIds(jsonMessage.tfq))
+  if (jsonMessage.tff) await thunderFeedFull(queryByAmazonIds(jsonMessage.tff))
 }
 
 try {
