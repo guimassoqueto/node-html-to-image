@@ -1,8 +1,8 @@
 {
   "type": "module",
   "name": "scrap-puppet",
-  "version": "3.0.1",
-  "description": "Base Node Setup",
+  "version": "3.0.2",
+  "description": "Scrap Puppet",
   "main": "index.js",
   "scripts": {
     "build": "tsc",

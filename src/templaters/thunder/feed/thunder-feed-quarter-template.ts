@@ -35,14 +35,14 @@ export class ThunderFeedQuarterTemplate {
           position: relative;
         }
         #message {
-          padding: 0.5em 3em;
+          padding: 0.25em 3em;
           background: #000;
           position: absolute;
-          left: 25.5%;
+          left: 22.5%;
           top: 47.5%;
           color: #fff;
           border-radius: 2em;
-          font-size: 1.75em;
+          font-size: 2em;
         }
         .container {
           height: 1080px;
@@ -210,7 +210,7 @@ export class ThunderFeedQuarterTemplate {
               </div>
             </div>
           </div>
-          <div class="row2-col1">
+          <div class="row2-col2">
             <div class="title">
               ${products[3].title}
             </div>
