@@ -16,7 +16,11 @@ export class Screenshot {
     const pageHTML = template;
     const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
-    const filename = product ? product?.id.slice(-10) : new Date().getMilliseconds().toString()
+    let filename = new Date().getMilliseconds().toString();
+    if(product) {
+      filename = product.id.replaceAll('/', '_')
+    }
+    
     await page.setViewport(options);
     await page.setContent(pageHTML, { waitUntil: "networkidle2" });
     await page.screenshot({
