@@ -130,6 +130,11 @@
     .container_price-price--new{
       font-size: 3.75em;
     }
+
+    #priceNewInfo {
+      font-size: 0.8em;
+    }
+
     .container_button {
       display: flex;
       flex-direction: row;
@@ -156,8 +161,7 @@
     <div class="container">
       <div class="container_header">
   <div class="container_header-logo">
-    <!--<img src="https://vetores.org/d/magalu.svg">-->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+    <img id="marketplaceLogo">
   </div>
       </div>
       <div class="container_title">
@@ -186,6 +190,7 @@
     <div class="container_price-price--new">
         <span>R$</span>
         <span id="priceNew"></span>
+        <span id="priceNewInfo"></span>
     </div>
   </div>
   <div class="container_price-discount">
@@ -203,6 +208,7 @@
       </div>
     </div>
     <script>
+      const productId = "${product.id}"
       const title = "${product.title}";
       const imageUrl = "${product.image_url}";
       const previousPrice = "${product.previous_price}";
@@ -213,11 +219,13 @@
       
 
       const titleElement = document.getElementById("title");
+      const marketplaceLogoElement = document.getElementById("marketplaceLogo");
       const imageElement = document.getElementById("image");
       const infoShippingElement = document.getElementById("infoShipping");
       const infoInstallmentsElement =  document.getElementById("infoInstallments");
       const priceOldElement = document.getElementById("priceOld");
       const priceNewElement = document.getElementById("priceNew");
+      const priceNewInfoElement = document.getElementById("priceNewInfo");
       const priceDiscountElement = document.getElementById("priceDiscount");
       const fomoMessageElement = document.getElementById("fomoMessage");
 
@@ -226,9 +234,15 @@
 
       const randomFomo = ["Desconto imperdível!", "Oferta incrível, não perca!", "Preço baixo, aproveite!", "Promoção relâmpago!", "Economize já!", "Só hoje, desconto!", "Compre e economize!", "Não perca essa!", "Preço de arrasar!", "Super desconto hoje!", "Aproveite o desconto!", "Oferta única, corra!", "Desconto sensacional!", "Só agora, promoção!", "Aproveite o preço!", "Acaba em instantes!", "Economia garantida!", "Promoção exclusiva hoje!", "Preço incrível!", "Desconto especial!"]
       if (parseFloat(discount) >= 25) {
-  document.querySelector(".container_image--fomo").style.display = "block";
-  fomoMessageElement.innerText = randomFomo[Math.floor(Math.random() * randomFomo.length)]
+        document.querySelector(".container_image--fomo").style.display = "block";
+        fomoMessageElement.innerText = randomFomo[Math.floor(Math.random() * randomFomo.length)]
       } 
+
+      if (productId.includes("amazon")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg");
+      if (productId.includes("magazineluiza")) {
+        marketplaceLogoElement.setAttribute("src", "https://vetores.org/d/magalu.svg");
+        priceNewInfoElement.innerText = "  no Pix"
+      }
 
       titleElement.innerText = title;
       imageElement.setAttribute("src", imageUrl);
