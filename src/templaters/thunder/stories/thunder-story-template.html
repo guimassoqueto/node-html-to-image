@@ -169,7 +169,7 @@
       </div>
       <div class="container_image">
   <img id="image">
-  <div class="container_image--fomo">
+  <div class="container_image--fomo" id="fomoContainer">
     <span id="fomoMessage"></span>
   </div>
       </div>
@@ -215,7 +215,7 @@
       const price = "${product.price}";
       const discount = "${product.discount}";
       //const installments = ${parseFloat(product.price) > 100};
-      //const freeShipping = ${product.free_shipping};  
+      //const freeShipping = ${product.free_shipping};
       
 
       const titleElement = document.getElementById("title");
@@ -243,7 +243,12 @@
         marketplaceLogoElement.setAttribute("src", "https://vetores.org/d/magalu.svg");
         priceNewInfoElement.innerText = "  no Pix"
       }
-
+      if (productId.includes("nike.com")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg");
+      if (productId.includes("adidas.com")) {
+        document.querySelector(".container_image--fomo").style.display = "none";
+        marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/1/1c/Adidas-group-logo-fr.svg");
+      }
+      
       titleElement.innerText = title;
       imageElement.setAttribute("src", imageUrl);
       priceOldElement.innerText = previousPrice;

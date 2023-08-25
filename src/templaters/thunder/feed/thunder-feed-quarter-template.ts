@@ -47,11 +47,11 @@ export class ThunderFeedQuarterTemplate {
         .container {
           height: 1080px;
           width: 1080px;
-          background-image: url('https://raw.githubusercontent.com/guimassoqueto/logos/main/thunder-background.png');
+          /*background-image: url('https://raw.githubusercontent.com/guimassoqueto/logos/main/thunder-background.png');
           background-repeat: repeat;
           background-size: 540px 540px;
           position: relative;
-          z-index: -99;
+          z-index: -99;*/
         }
         .container::before {
           content: "";

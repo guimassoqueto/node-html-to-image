@@ -18,7 +18,7 @@ export class Screenshot {
     const page = await browser.newPage();
     let filename = new Date().getMilliseconds().toString();
     if(product) {
-      filename = product.id.replaceAll('/', '_')
+      filename = btoa(encodeURIComponent(product.id)) 
     }
     
     await page.setViewport(options);

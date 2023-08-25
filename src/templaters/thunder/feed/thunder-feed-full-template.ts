@@ -14,6 +14,8 @@ type ProductModel = {
 
 export class ThunderFeedFullTemplate {
   static generate(product: ProductModel) {
+    if (product.id.includes('nike.com') || product.id.includes('adidas.com')) return sportsTemplate(product)
+
     return `
     <!DOCTYPE html>
   <html lang="en">
@@ -156,4 +158,88 @@ export class ThunderFeedFullTemplate {
 </html>
     `
   }
+}
+
+function sportsTemplate(product: ProductModel) {
+  return `
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.cdnfonts.com/css/groovy-cartoon-expanded-round" rel="stylesheet">
+  </head>
+  <style>
+    * {
+      font-family: 'Groovy Cartoon Expanded Round', sans-serif;
+    }
+    body {
+      margin: 0;
+      overflow: hidden;
+      height: 5000px;
+      width: 1080px;
+    }
+    .container {
+      background-image: url("${product.image_url}");    
+      height: 1080px;
+      width: 1080px;
+      padding-top: 7em;
+    }
+
+    #discount {
+      position: relative;
+    }
+
+    .circle {
+      width: 220px;
+      height: 220px;
+      line-height: 220px;
+      border-radius: 50%;
+      font-size: 6em;
+      color: #fff;
+      text-align: center;
+      background: #000
+    }
+    .prices {
+      font-size: 4em;
+      text-align: center;
+      margin-top: 9em;
+    }
+    #previousPrice {
+      text-decoration: line-through .1em;
+      color: #8b8b8b;
+    }
+    
+  </style>
+  <body>
+      <div class="container" id="container">
+        <div class="discount" id="discount">
+          <div class="circle">-${product.discount}%</div>
+        </div>
+        <div class="prices">
+          <span id="previousPrice">R$ ${product.previous_price.replace('.', ',')}</span>
+          <span>R$ ${product.price.replace('.', ',')}</span>
+        </div>
+      </div>
+    <script>
+      const productId = "${product.id}";
+      const containerElement = document.getElementById("container");
+      const discountElement = document.getElementById("discount");
+      const bodyElement = document.body;
+
+      if (productId.includes("adidas")) {
+        containerElement.style.backgroundPosition = "0 -200px"
+        bodyElement.style.backgroundColor = "#EBEEF0"
+        discountElement.style.marginLeft = "45em"
+      }
+
+      if (productId.includes("nike")) {
+        discountElement.style.marginLeft = "8em"
+        bodyElement.style.backgroundColor = "#F5F5F5"
+      }
+    </script>
+  </body>
+  </html>
+  `
 }

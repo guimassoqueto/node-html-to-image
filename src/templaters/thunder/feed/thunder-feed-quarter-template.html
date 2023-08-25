@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,17 @@
     * {
       font-family: 'Groovy Cartoon Expanded Round', sans-serif;
     }
+
     html {
       height: 1080px;
       width: 1080px;
     }
+
     body {
       margin: 0;
       position: relative;
     }
+
     #message {
       padding: 0.25em 3em;
       background: #000;
@@ -27,6 +31,7 @@
       border-radius: 2em;
       font-size: 2em;
     }
+
     .container {
       height: 1080px;
       width: 1080px;
@@ -36,6 +41,7 @@
       position: relative;
       z-index: -99;
     }
+
     .container::before {
       content: "";
       position: absolute;
@@ -46,6 +52,7 @@
       background-color: rgba(255, 255, 255, 0.95);
       z-index: -1;
     }
+
     .row1 {
       height: 540px;
       width: 1080px;
@@ -53,6 +60,7 @@
       flex-direction: row;
       border-bottom: 3px solid #000;
     }
+
     .row1-col1 {
       width: 50%;
       display: flex;
@@ -61,6 +69,7 @@
       justify-content: space-evenly;
       border-right: 5px solid #000;
     }
+
     .row1-col2 {
       width: 50%;
       display: flex;
@@ -68,12 +77,14 @@
       align-items: center;
       justify-content: space-evenly;
     }
+
     .row2 {
       height: 540px;
       display: flex;
       flex-direction: row;
       border-top: 3px solid #000;
     }
+
     .row2-col1 {
       width: 50%;
       display: flex;
@@ -82,6 +93,7 @@
       justify-content: space-evenly;
       border-right: 5px solid #000;
     }
+
     .row2-col2 {
       width: 50%;
       display: flex;
@@ -89,42 +101,50 @@
       align-items: center;
       justify-content: space-evenly;
     }
+
     .title {
       width: 85%;
       color: #000;
       font-size: 2em;
       text-align: center;
     }
+
     .image img {
       max-height: 250px;
       max-width: 440px;
     }
+
     .info {
       display: flex;
-      flex-direction: row;  
-      justify-content: space-around; 
+      flex-direction: row;
+      justify-content: space-around;
       align-items: center;
       width: 100%;
     }
+
     .info_price {
       display: flex;
-      flex-direction: column;    
+      flex-direction: column;
     }
+
     .info_price-previous {
       color: #777;
       font-size: 1.75em;
       text-decoration: line-through solid #777 3px;
     }
+
     .info_price-current {
       color: #000000;
       font-size: 2.5em;
     }
+
     .info_discount {
       color: #CC0C39;
       font-size: 3em;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="row1">
@@ -145,7 +165,7 @@
             </div>
           </div>
           <div class="info_discount">
-              -<span>${products[0].discount}</span>%
+            -<span>${products[0].discount}</span>%
           </div>
         </div>
       </div>
@@ -166,7 +186,7 @@
             </div>
           </div>
           <div class="info_discount">
-              -<span>${products[1].discount}</span>%
+            -<span>${products[1].discount}</span>%
           </div>
         </div>
       </div>
@@ -189,7 +209,7 @@
             </div>
           </div>
           <div class="info_discount">
-              -<span>${products[2].discount}</span>%
+            -<span>${products[2].discount}</span>%
           </div>
         </div>
       </div>
@@ -210,7 +230,7 @@
             </div>
           </div>
           <div class="info_discount">
-              -<span>${products[3].discount}</span>%
+            -<span>${products[3].discount}</span>%
           </div>
         </div>
       </div>
@@ -227,4 +247,5 @@
     dateElement.innerText = currentDay + "/" + currentMonth;
   </script>
 </body>
+
 </html>
