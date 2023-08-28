@@ -1,16 +1,16 @@
 export type ProductModel = {
-  id: string
-  title: string
-  image_url: string
-  category: string
-  reviews: number
-  free_shipping: boolean
-  price: string
-  previous_price: string
-  discount: number
-  created_at: Date
-  updated_at: Date
-}
+  id: string;
+  title: string;
+  image_url: string;
+  category: string;
+  reviews: number;
+  free_shipping: boolean;
+  price: string;
+  previous_price: string;
+  discount: number;
+  created_at: Date;
+  updated_at: Date;
+};
 
 export class ThunderFeedQuarterTemplate {
   static generate(products: ProductModel[]) {
@@ -20,11 +20,14 @@ export class ThunderFeedQuarterTemplate {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://fonts.cdnfonts.com/css/groovy-cartoon-expanded-round" rel="stylesheet">
-      <title>Document</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1;0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,1;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet"> 
+      <title>Helo</title>
       <style>
         * {
-          font-family: 'Groovy Cartoon Expanded Round', sans-serif;
+          font-family: 'Sofia Sans Condensed', sans-serif;
+          font-weight: 600;
         }
         html {
           height: 1080px;
@@ -155,10 +158,12 @@ export class ThunderFeedQuarterTemplate {
             <div class="info">
               <div class="info_price">
                 <div class="info_price-previous">
-                  R$ <span>${products[0].previous_price.replace('.', ',')}</span>
+                  R$ <span>${
+      products[0].previous_price.replace(".", ",")
+    }</span>
                 </div>
                 <div class="info_price-current">
-                  R$ <span>${products[0].price.replace('.', ',')}</span>
+                  R$ <span>${products[0].price.replace(".", ",")}</span>
                 </div>
               </div>
               <div class="info_discount">
@@ -176,10 +181,12 @@ export class ThunderFeedQuarterTemplate {
             <div class="info">
               <div class="info_price">
                 <div class="info_price-previous">
-                  R$ <span>${products[1].previous_price.replace('.', ',')}</span>
+                  R$ <span>${
+      products[1].previous_price.replace(".", ",")
+    }</span>
                 </div>
                 <div class="info_price-current">
-                  R$ <span>${products[1].price.replace('.', ',')}</span>
+                  R$ <span>${products[1].price.replace(".", ",")}</span>
                 </div>
               </div>
               <div class="info_discount">
@@ -199,10 +206,12 @@ export class ThunderFeedQuarterTemplate {
             <div class="info">
               <div class="info_price">
                 <div class="info_price-previous">
-                  R$ <span>${products[2].previous_price.replace('.', ',')}</span>
+                  R$ <span>${
+      products[2].previous_price.replace(".", ",")
+    }</span>
                 </div>
                 <div class="info_price-current">
-                  R$ <span>${products[2].price.replace('.', ',')}</span>
+                  R$ <span>${products[2].price.replace(".", ",")}</span>
                 </div>
               </div>
               <div class="info_discount">
@@ -220,10 +229,12 @@ export class ThunderFeedQuarterTemplate {
             <div class="info">
               <div class="info_price">
                 <div class="info_price-previous">
-                  R$ <span>${products[3].previous_price.replace('.', ',')}</span>
+                  R$ <span>${
+      products[3].previous_price.replace(".", ",")
+    }</span>
                 </div>
                 <div class="info_price-current">
-                  R$ <span>${products[3].price.replace('.', ',')}</span>
+                  R$ <span>${products[3].price.replace(".", ",")}</span>
                 </div>
               </div>
               <div class="info_discount">
@@ -245,6 +256,6 @@ export class ThunderFeedQuarterTemplate {
       </script>
     </body>
     </html>
-    `
+    `;
   }
 }
