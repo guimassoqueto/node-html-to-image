@@ -1,20 +1,8 @@
-type ProductModel = {
-  id: string;
-  title: string;
-  image_url: string;
-  category: string;
-  reviews: number;
-  free_shipping: boolean;
-  price: string;
-  previous_price: string;
-  discount: number;
-  created_at: Date;
-  updated_at: Date;
-};
+import { ProductModel } from "../../../domain/models/product-model.js";
 
 export class ThunderFeedFullTemplate {
   static generate(product: ProductModel) {
-    if (product.id.includes("nike.com") || product.id.includes("adidas.com")) {
+    if (product.product_url.includes("nike.com") || product.product_url.includes("adidas.com")) {
       return sportsTemplate(product);
     }
 
@@ -135,10 +123,8 @@ export class ThunderFeedFullTemplate {
       <div class="container_body">
         <div class="container_body-item">
           <div class="container_body-item--description">
-            <span id="previousPrice">R$ ${
-      product.previous_price.replace(".", ",")
-    }</span>
-            <span id="price">R$ ${product.price.replace(".", ",")}</span>
+            <span id="previousPrice">R$ ${product.previous_price.replace('.', ',')}</span>
+            <span id="price">R$ ${product.price.replace('.', ',')}</span>
             <span id="discount">-${product.discount}%</span>
           </div>
           <div class="container_body-item--image">
@@ -231,18 +217,18 @@ function sportsTemplate(product: ProductModel) {
         </div>
       </div>
     <script>
-      const productId = "${product.id}";
+      const productUrl = "${product.product_url}";
       const containerElement = document.getElementById("container");
       const discountElement = document.getElementById("discount");
       const bodyElement = document.body;
 
-      if (productId.includes("adidas")) {
+      if (productUrl.includes("adidas")) {
         containerElement.style.backgroundPosition = "0 -200px"
         bodyElement.style.backgroundColor = "#EBEEF0"
         discountElement.style.marginLeft = "45em"
       }
 
-      if (productId.includes("nike")) {
+      if (productUrl.includes("nike")) {
         discountElement.style.marginLeft = "8em"
         bodyElement.style.backgroundColor = "#F5F5F5"
       }

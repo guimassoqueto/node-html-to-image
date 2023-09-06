@@ -211,7 +211,7 @@ export class ThunderStoryTemplate {
 					</div>
 				</div>
 				<script>
-					const productId = "${product.id}"
+					const productUrl = "${product.product_url}"
 					const title = "${product.title}";
 					const imageUrl = "${product.image_url}";
 					const previousPrice = "${product.previous_price}";
@@ -234,13 +234,13 @@ export class ThunderStoryTemplate {
 					if (!freeShipping) infoShippingElement.style.display = "none";
 					if (!installments) infoInstallmentsElement.style.display = "none";
 		
-					if (productId.includes("amazon")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg");
-					if (productId.includes("magazineluiza")) {
+					if (productUrl.includes("amazon")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg");
+					if (productUrl.includes("magazineluiza")) {
 						marketplaceLogoElement.setAttribute("src", "https://vetores.org/d/magalu.svg");
 						priceNewInfoElement.innerText = "  no Pix"
 					}
-					if (productId.includes("nike.com")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg");
-					if (productId.includes("adidas.com")) {
+					if (productUrl.includes("nike.com")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg");
+					if (productUrl.includes("adidas.com")) {
 						marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/1/1c/Adidas-group-logo-fr.svg");
 					}
 		

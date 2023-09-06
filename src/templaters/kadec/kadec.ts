@@ -238,7 +238,7 @@ export class KadecTemplater {
          
         </div>
         <script>
-          const productId = "${product.id}"
+          const productUrl = "${product.product_url}"
           const title = "${product.title}";
           const imageUrl = "${product.image_url}";
           const previousPrice = "${product.previous_price}";
@@ -267,8 +267,8 @@ export class KadecTemplater {
             fomoMessageElement.innerText = randomFomo[Math.floor(Math.random() * randomFomo.length)]
           } 
     
-          if (productId.includes("amazon.com")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg");
-          if (productId.includes("magazineluiza.com")) {
+          if (productUrl.includes("amazon.com")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg");
+          if (productUrl.includes("magazineluiza.com")) {
             marketplaceLogoElement.setAttribute("src", "https://vetores.org/d/magalu.svg");
             priceNewInfoElement.innerText = "no Pix"
           }

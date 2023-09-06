@@ -233,14 +233,14 @@
      
     </div>
     <script>
-      const productId = "${product.id}"
+      const productUrl = "${product.product_url}"
       const title = "${product.title}";
       const imageUrl = "${product.image_url}";
       const previousPrice = "${product.previous_price}";
       const price = "${product.price}";
       const discount = "${product.discount}";
-      //const installments = ${parseFloat(product.price) > 100};
-      //const freeShipping = ${product.free_shipping};  
+      const installments = "${parseFloat(product.price) > 100};"
+      const freeShipping = "${product.free_shipping};"
       
       const titleElement = document.getElementById("title");
       const marketplaceLogoElement = document.getElementById("marketplaceLogo");
@@ -262,8 +262,8 @@
         fomoMessageElement.innerText = randomFomo[Math.floor(Math.random() * randomFomo.length)]
       } 
 
-      if (productId.includes("amazon.com")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg");
-      if (productId.includes("magazineluiza.com")) {
+      if (productUrl.includes("amazon.com")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg");
+      if (productUrl.includes("magazineluiza.com")) {
         marketplaceLogoElement.setAttribute("src", "https://vetores.org/d/magalu.svg");
         priceNewInfoElement.innerText = "no Pix"
       }
