@@ -2,7 +2,12 @@ import { ProductModel } from "../../../domain/models/product-model.js";
 
 export class ThunderFeedFullTemplate {
   static generate(product: ProductModel) {
-    if (product.product_url.includes("nike.com") || product.product_url.includes("adidas.com")) {
+    if (
+      product.url.includes("nike.com") || product.url.includes("adidas.com") ||
+      product.url.includes("puma.") ||
+      product.url.includes("underarmour.com") ||
+      product.url.includes("reebok.com")
+    ) {
       return sportsTemplate(product);
     }
 
@@ -123,8 +128,10 @@ export class ThunderFeedFullTemplate {
       <div class="container_body">
         <div class="container_body-item">
           <div class="container_body-item--description">
-            <span id="previousPrice">R$ ${product.previous_price.replace('.', ',')}</span>
-            <span id="price">R$ ${product.price.replace('.', ',')}</span>
+            <span id="previousPrice">R$ ${
+      product.previous_price.replace(".", ",")
+    }</span>
+            <span id="price">R$ ${product.price.replace(".", ",")}</span>
             <span id="discount">-${product.discount}%</span>
           </div>
           <div class="container_body-item--image">
@@ -173,7 +180,8 @@ function sportsTemplate(product: ProductModel) {
       width: 1080px;
     }
     .container {
-      background-image: url("${product.image_url}");    
+      background-image: url("${product.image_url}"); 
+      background-size: 'cover'; 
       height: 1080px;
       width: 1080px;
       padding-top: 7em;
@@ -217,7 +225,7 @@ function sportsTemplate(product: ProductModel) {
         </div>
       </div>
     <script>
-      const productUrl = "${product.product_url}";
+      const productUrl = "${product.url}";
       const containerElement = document.getElementById("container");
       const discountElement = document.getElementById("discount");
       const bodyElement = document.body;
@@ -231,6 +239,25 @@ function sportsTemplate(product: ProductModel) {
       if (productUrl.includes("nike")) {
         discountElement.style.marginLeft = "8em"
         bodyElement.style.backgroundColor = "#F5F5F5"
+      }
+
+      if (productUrl.includes("puma")) {
+        discountElement.style.marginLeft = "8em"
+        bodyElement.style.backgroundColor = "#FFF"
+        containerElement.style.backgroundPosition = "0 50px"
+      }
+
+      if (productUrl.includes("underarmour")) {
+        containerElement.style.backgroundPosition = "50px"
+        containerElement.style.backgroundRepeat = "no-repeat"
+        discountElement.style.marginLeft = "45em"
+        bodyElement.style.backgroundColor = "#FFF"
+      }
+
+      if (productUrl.includes("reebok")) {
+        containerElement.style.backgroundPosition = "0 0"
+        discountElement.style.marginLeft = "45em"
+        bodyElement.style.backgroundColor = "#DCDBE0"
       }
     </script>
   </body>

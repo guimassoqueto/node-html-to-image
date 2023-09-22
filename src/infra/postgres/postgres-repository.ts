@@ -14,7 +14,8 @@ function mapper(queryResult: QueryResult<any>): ProductModel[] {
   const products: ProductModel[] = rows.map((row) => {
     const product: ProductModel = {
       id: row.id,
-      product_url: row.product_url,
+      url: row.url,
+      afiliate_url: row.afiliate_url,
       title: row.title,
       category: row.category,
       reviews: row.reviews,

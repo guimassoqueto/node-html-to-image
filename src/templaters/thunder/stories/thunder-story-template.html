@@ -7,6 +7,7 @@
   <title>Promo Thunder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://kit.fontawesome.com/0f4b01b0f5.js" crossorigin="anonymous"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1;0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,1;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap"
     rel="stylesheet">
@@ -54,11 +55,11 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      padding-top: 4em;
+      padding-top: 2em;
     }
 
     .container_header-logo img {
-      height: 5em;
+      height: 12em;
     }
 
     .container_title {
@@ -131,11 +132,29 @@
     #priceNewInfo {
       font-size: 0.8em;
     }
+    
+    .button_wrapper{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .button_info {
+      font-size: 2.5em;
+    }
 
     .container_button {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+    }
+
+    .container_button-img:first-child {
+      margin-right: 2.5em;
+    }
+
+    .container_button-img:last-child {
+      margin-left: 2.5em;
     }
 
     .container_button-img img {
@@ -158,14 +177,14 @@
     <div class="container">
       <div class="container_header">
         <div class="container_header-logo">
-          <img id="marketplaceLogo">
+          <img id="marketplaceLogo" src="https://raw.githubusercontent.com/guimassoqueto/logos/main/pdd1.png">
         </div>
       </div>
       <div class="container_title">
-        <h1 id="title"></h1>
+        <h1 id="title">${product.title}</h1>
       </div>
       <div class="container_image">
-        <img id="image">
+        <img id="image" src="${product.image_url}">
       </div>
       <div class="container_info">
         <div class="container_info-shipping" id="infoShipping">
@@ -179,41 +198,43 @@
         <div class="container_price-price">
           <div class="container_price-price--old">
             <span>R$</span>
-            <span id="priceOld"></span>
+            <span id="priceOld">${product.previous_price}</span>
           </div>
           <div class="container_price-price--new">
             <span>R$</span>
-            <span id="priceNew"></span>
+            <span id="priceNew">${product.price}</span>
             <span id="priceNewInfo"></span>
           </div>
         </div>
         <div class="container_price-discount">
-          <span id="priceDiscount"></span>
+          <span id="priceDiscount">-${product.discount}%</span>
         </div>
       </div>
-      <div class="container_button">
-        <div class="container_button-img">
-          <img
-            src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg"
-            alt="">
-        </div>
-        <div class="container_button-button"></div>
-        <div class="container_button-img">
-          <img
-            src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg"
-            alt="">
+      <div class="button_wrapper">
+        <span class="button_info">
+          <i class="fa-solid fa-arrow-turn-down fa-flip-horizontal"></i>
+          <span id="button_info-msg">TOQUE AQUI PARA COMPRAR</span>
+          <i class="fa-solid fa-arrow-turn-down"></i>
+        </span>
+        <div class="container_button">
+          <div class="container_button-img">
+            <img
+              src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg"
+              alt="">
+          </div>
+          <div class="container_button-button"></div>
+          <div class="container_button-img">
+            <img
+              src="https://raw.githubusercontent.com/guimassoqueto/logos/da22a5334a130498005a1427825baff7f72de371/flash-thunder-svgrepo-com.svg"
+              alt="">
+          </div>
         </div>
       </div>
-    </div>
+  </div>
     <script>
-      const productUrl = "${product.product_url}"
-      const title = "${product.title}";
-      const imageUrl = "${product.image_url}";
-      const previousPrice = "${product.previous_price}";
-      const price = "${product.price}";
-      const discount = "${product.discount}";
-      const installments = "${parseFloat(product.price) > 100}";
-      const freeShipping = "${product.free_shipping}";
+      const productUrl = "${product.url}"
+      //const installments = ${parseFloat(product.price) > 100};
+      //const freeShipping = ${product.free_shipping};
 
 
       const titleElement = document.getElementById("title");
@@ -228,22 +249,10 @@
 
       if (!freeShipping) infoShippingElement.style.display = "none";
       if (!installments) infoInstallmentsElement.style.display = "none";
-
-      if (productUrl.includes("amazon")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg");
+      
       if (productUrl.includes("magazineluiza")) {
-        marketplaceLogoElement.setAttribute("src", "https://vetores.org/d/magalu.svg");
         priceNewInfoElement.innerText = "  no Pix"
       }
-      if (productUrl.includes("nike.com")) marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg");
-      if (productUrl.includes("adidas.com")) {
-        marketplaceLogoElement.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/1/1c/Adidas-group-logo-fr.svg");
-      }
-
-      titleElement.innerText = title;
-      imageElement.setAttribute("src", imageUrl);
-      priceOldElement.innerText = previousPrice;
-      priceNewElement.innerText = price;
-      priceDiscountElement.innerText = discount && "-" + discount.toString() + "%";
     </script>
   </div>
 </body>

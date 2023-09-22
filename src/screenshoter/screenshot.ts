@@ -2,9 +2,9 @@ import puppeteer from "puppeteer";
 import { ProductModel } from "../domain/models/product-model.js";
 
 type viewport = {
-  width: number,
-  height: number
-}
+  width: number;
+  height: number;
+};
 
 export class Screenshot {
   static async take(
@@ -17,10 +17,10 @@ export class Screenshot {
     const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
     let filename = new Date().getMilliseconds().toString();
-    if(product) {
-      filename = btoa(encodeURIComponent(product.product_url)) 
+    if (product) {
+      filename = btoa(encodeURIComponent(product.afiliate_url));
     }
-    
+
     await page.setViewport(options);
     await page.setContent(pageHTML, { waitUntil: "networkidle2" });
     await page.screenshot({

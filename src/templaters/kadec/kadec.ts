@@ -238,7 +238,7 @@ export class KadecTemplater {
          
         </div>
         <script>
-          const productUrl = "${product.product_url}"
+          const productUrl = "${product.url}"
           const title = "${product.title}";
           const imageUrl = "${product.image_url}";
           const previousPrice = "${product.previous_price}";

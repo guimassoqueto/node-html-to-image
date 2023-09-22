@@ -1,6 +1,7 @@
 export type ProductModel = {
   id: string
-  product_url: string
+  url: string
+  afiliate_url: string
   title: string
   image_url: string
   category: string
